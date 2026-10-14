@@ -89,7 +89,8 @@ a {
 }
 
 .hero {
-  padding-block: var(--space-2xl);
+  padding-block-start: var(--space-2xl);
+  padding-block-end: var(--space-m);
 }
 
 .hero-grid {
@@ -316,6 +317,33 @@ h1 {
   white-space: nowrap;
 }
 
+/* Streamlined list of concrete services: a clean, label-only grid with a
+   small gold marker, distinct from the descriptive row-lists above. */
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-s) var(--space-xl);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  font-size: clamp(1.05rem, 1rem + 0.25vw, 1.3rem);
+  font-weight: 600;
+}
+
+.service-list li::before {
+  content: "";
+  flex-shrink: 0;
+  inline-size: 0.6rem;
+  block-size: 0.6rem;
+  background: var(--accent);
+}
+
 /* Horizontal stepper for the renovation process: nodes connected by a
    single line read left-to-right as a timeline instead of stacked cards. */
 .stepper {
@@ -473,6 +501,10 @@ h1 {
 
   .row-list--services .row-index {
     white-space: normal;
+  }
+
+  .service-list {
+    grid-template-columns: 1fr;
   }
 
   .stepper {
